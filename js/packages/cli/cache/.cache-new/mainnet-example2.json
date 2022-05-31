@@ -1,0 +1,33 @@
+{
+  "program": {
+    "uuid": "DepnUyHGA",
+    "candyMachine": "DepnUyhMnWUh416XPZrEXCnSvrptYpEAdN7yQs1GjWLN",
+    "collection": "9HZVPNJeWNqMjDdjd9Zr6Vvsaosm1wHCJrJez7pW6czG"
+  },
+  "items": {
+    "0": {
+      "link": "https://arweave.net/FpkrQdw_HlAWXHP5lQnzrEfYPbp29mBNUkHFITwMR6E",
+      "imageLink": "https://arweave.net/diiP-wuxaVUt8U-NetInzMIHjCn7Ipj-mUYri7yesKk?ext=png",
+      "name": "N #0001 Mainnet",
+      "onChain": true,
+      "verifyRun": true
+    },
+    "1": {
+      "link": "https://arweave.net/KqQiDOWBlAeee_0PKXyMqmKMFvWLZp-KllaqiSJXJ4w",
+      "imageLink": "https://arweave.net/bF0aiNBM2SKlP2W7fK95qSdSDPgqJnnt0ce7yTxEUsA?ext=png",
+      "name": "N #0002 Mainnet",
+      "onChain": true,
+      "verifyRun": true
+    },
+    "2": {
+      "link": "https://arweave.net/3g1JuwRl0AWKBVLFO4FEToUjI1CFVEG69qD2Y3tpl74",
+      "imageLink": "https://arweave.net/j2SZ-VOxWJSgHw-AxSGXES8NE_ST9elZOS2cIS6wwjc?ext=png",
+      "name": "N #0003 Mainnet",
+      "onChain": true,
+      "verifyRun": true
+    }
+  },
+  "env": "mainnet",
+  "cacheName": "example2",
+  "startDate": "62858880"
+}

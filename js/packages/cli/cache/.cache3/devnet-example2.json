@@ -1,0 +1,39 @@
+{
+  "program": {
+    "uuid": "4SDHEz",
+    "candyMachine": "4SDHEzHtWfStQXTTy5rGyznZQYy3bvDri9StKZ6VRqpX",
+    "collection": "86JkQ1neXxaEfckQAtGV1cRJt5z9wQBSvBD24Evd42nn"
+  },
+  "items": {
+    "0": {
+      "link": "https://arweave.net/G-SPssdHHHal_iox39W8IiBAv8IAGEvMXNFy-DOt9sc",
+      "imageLink": "https://arweave.net/beXg_lA_Tu8x0Qf1hmtB9lSyhx2CyLoXaDielrR8slE?ext=png",
+      "name": "NH #0001",
+      "onChain": true,
+      "verifyRun": false
+    },
+    "1": {
+      "link": "https://arweave.net/NRdyLt7OdAMF4qTT9RRHQczAsWBFzW5IO44dAEEmfSY",
+      "imageLink": "https://arweave.net/Cc0yfwkH5KsleAgt5p3rmiZAvyM-18ocwaWwQpBcRcY?ext=png",
+      "name": "NH #0002",
+      "onChain": true,
+      "verifyRun": false
+    },
+    "2": {
+      "link": "https://arweave.net/qrD119aTO69J9ThDUlXnmbFUqqvIS3OYWZ7S3cfWi7A",
+      "imageLink": "https://arweave.net/cuD0rtM2bZx1FTHViKRMGFuMDuYue7uwDhp0cJFM080h?ext=png",
+      "name": "NH #0003",
+      "onChain": true,
+      "verifyRun": false
+    },
+    "3": {
+      "link": "https://arweave.net/lVpxJvwKGR6iA7Gg9YnfYV9ZckoTStzDzBVVx0U37-M",
+      "imageLink": "https://arweave.net/F7cyeUlv8RdwL7Q9OgPRKmsrRtfk6f4EhHpWzECpxSk?ext=png",
+      "name": "NH #0004",
+      "onChain": true,
+      "verifyRun": false
+    }
+  },
+  "env": "devnet",
+  "cacheName": "example2"
+}

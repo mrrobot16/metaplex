@@ -1,0 +1,34 @@
+{
+  "program": {
+    "uuid": "DepnUy",
+    "candyMachine": "DepnUyhMnWUh416XPZrEXCnSvrptYpEAdN7yQs1GjWLN",
+    "collection": ""
+  },
+  "items": {
+    "0": {
+      "link": "https://arweave.net/FpkrQdw_HlAWXHP5lQnzrEfYPbp29mBNUkHFITwMR6Ez",
+      "imageLink": "https://arweave.net/diiP-wuxaVUt8U-NetInzMIHjCn7Ipj-mUYri7yesKkz?ext=png",
+      "name": "N #0001",
+      "onChain": true,
+      "verifyRun": true
+    },
+    "1": {
+      "link": "https://arweave.net/KqQiDOWBlAeee_0PKXyMqmKMFvWLZp-KllaqiSJXJ4wz",
+      "imageLink": "https://arweave.net/bF0aiNBM2SKlP2W7fK95qSdSDPgqJnnt0ce7yTxEUsAz?ext=png",
+      "name": "N #0002",
+      "onChain": true,
+      "verifyRun": true
+    },
+    "2": {
+      "link": "https://arweave.net/3g1JuwRl0AWKBVLFO4FEToUjI1CFVEG69qD2Y3tpl74z",
+      "imageLink": "https://arweave.net/j2SZ-VOxWJSgHw-AxSGXES8NE_ST9elZOS2cIS6wwjcz?ext=png",
+      "name": "N #0003",
+      "onChain": true,
+      "verifyRun": true
+    }
+
+  },
+  "env": "devnet",
+  "cacheName": "example2",
+  "startDate": "62858880"
+}

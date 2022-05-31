@@ -1,0 +1,32 @@
+{
+  "program": {
+    "uuid": "Bw81nzdsdadsadz",
+    "candyMachine": "Bw81nzB46KeqmxKcwmideJCK316fjMyQAA5t3t9vqmGS",
+    "collection": "3iE5WNf3JwKuynGivWJuGQa9uZtzLQWbcCPGzEdxxzeC"
+  },
+  "items": {
+    "0": {
+      "link": "https://arweave.net/hmA72bxAftCW2GP7MuoCaQbja3X7ypc855qIr2XqzFc",
+      "imageLink": "https://arweave.net/WKgI-IGVRWXYCeOCV_jn6zXAQ5Tsh3TnqUkYssGm19U?ext=png",
+      "name": "Bridges 25",
+      "onChain": true,
+      "verifyRun": false
+    },
+    "1": {
+      "link": "https://arweave.net/UOd_lLSZyWvYhhZKiTxDZYfGTzFrKPsHrLIK9txSZPM",
+      "imageLink": "https://arweave.net/M_JuXQ1ynGcq8TBYVHacf9apn8AoJuoCEslIwdcBGks?ext=png",
+      "name": "Kobe & Gianna",
+      "onChain": true,
+      "verifyRun": false
+    },
+    "2": {
+      "link": "https://arweave.net/yUPluI-GjdrBWI4td0WxNPZYsuD21zmm7moS09Dus9o",
+      "imageLink": "https://arweave.net/QAUq2uoHC9raUYMwGfqcMcZ0iOU0oewib0yE3mfLQBk?ext=png",
+      "name": "Michael Jordan DUNK",
+      "onChain": true,
+      "verifyRun": false
+    }
+  },
+  "env": "devnet",
+  "cacheName": "small-nba-assets"
+}

@@ -1,0 +1,82 @@
+{
+  "program": {
+    "uuid": "DepnUy",
+    "candyMachine": "DepnUyhMnWUh416XPZrEXCnSvrptYpEAdN7yQs1GjWLN",
+    "collection": "9HZVPNJeWNqMjDdjd9Zr6Vvsaosm1wHCJrJez7pW6czG"
+  },
+  "items": {
+    "0": {
+      "link": "https://arweave.net/FpkrQdw_HlAWXHP5lQnzrEfYPbp29mBNUkHFITwMR6E",
+      "imageLink": "https://arweave.net/diiP-wuxaVUt8U-NetInzMIHjCn7Ipj-mUYri7yesKk?ext=png",
+      "name": "Number #0001",
+      "onChain": true,
+      "verifyRun": true
+    },
+    "1": {
+      "link": "https://arweave.net/KqQiDOWBlAeee_0PKXyMqmKMFvWLZp-KllaqiSJXJ4w",
+      "imageLink": "https://arweave.net/bF0aiNBM2SKlP2W7fK95qSdSDPgqJnnt0ce7yTxEUsA?ext=png",
+      "name": "Number #0002",
+      "onChain": true,
+      "verifyRun": true
+    },
+    "2": {
+      "link": "https://arweave.net/3g1JuwRl0AWKBVLFO4FEToUjI1CFVEG69qD2Y3tpl74",
+      "imageLink": "https://arweave.net/j2SZ-VOxWJSgHw-AxSGXES8NE_ST9elZOS2cIS6wwjc?ext=png",
+      "name": "Number #0003",
+      "onChain": true,
+      "verifyRun": true
+    },
+    "3": {
+      "link": "https://arweave.net/yCPJq9ZlYHbplFpCkv_O4h08jVTq8TkV1sU7Z4cnJCs",
+      "imageLink": "https://arweave.net/gxuL3ps_-mC4_AkOHMOcUaQZS_z0JkXsTY217gDC7SI?ext=png",
+      "name": "Number #0004",
+      "onChain": true,
+      "verifyRun": true
+    },
+    "4": {
+      "link": "https://arweave.net/XV2CFFlqWnDLJKGLCjrM6jaW_EpciY0-k_m2JPJrk0Q",
+      "imageLink": "https://arweave.net/Sfd-2AOAi7d_jlUrgwd41AW_VwbO6OkoNVx4xTxSS2g?ext=png",
+      "name": "Number #0005",
+      "onChain": true,
+      "verifyRun": true
+    },
+    "5": {
+      "link": "https://arweave.net/tAriBYo-zeMBLT3QH6bR0R6fiFOmKjf8TciVIVRCGUQ",
+      "imageLink": "https://arweave.net/DaTZu5zQZOtjfQbxu8RSAMdVgXXelIC6MODTJoJf--w?ext=png",
+      "name": "Number #0006",
+      "onChain": true,
+      "verifyRun": true
+    },
+    "6": {
+      "link": "https://arweave.net/x8JdZXpLe8KufkAqytLx10uGd-7Nlk3UWNopDq4OEhg",
+      "imageLink": "https://arweave.net/WekpeFkbEtLNaytqOZ2b5_nxz1eNH_h8eQooqkFRdgw?ext=png",
+      "name": "Number #0007",
+      "onChain": true,
+      "verifyRun": true
+    },
+    "7": {
+      "link": "https://arweave.net/LEGxMA5d-HEaVZH5t34hItdflgxMUfdyjy6ayxTdL1U",
+      "imageLink": "https://arweave.net/ovB6T7g_BJr2Be0erZQcfNC0CMjftDJzkklaU7yn698?ext=png",
+      "name": "Number #0008",
+      "onChain": true,
+      "verifyRun": true
+    },
+    "8": {
+      "link": "https://arweave.net/KawjGZpEM0rHsV7y6VArlbYr6kGhm3YQoKE76yKCkjs",
+      "imageLink": "https://arweave.net/F8Y46K0TLpY21fV9ou7Sude9rYSWtoDQSLZ30W-zs3E?ext=png",
+      "name": "Number #0009",
+      "onChain": true,
+      "verifyRun": true
+    },
+    "9": {
+      "link": "https://arweave.net/7feR3ZyO134B91n8WEry8pOt6Yl68HmbW0PapoVjeKw",
+      "imageLink": "https://arweave.net/DahkXFV55rv6B-T9c7QdJmpRyruzy-2suHLpXD_IqRY?ext=png",
+      "name": "Number #0010",
+      "onChain": true,
+      "verifyRun": true
+    }
+  },
+  "env": "devnet",
+  "cacheName": "example",
+  "startDate": "62858880"
+}
