@@ -1,0 +1,32 @@
+{
+  "program": {
+    "uuid": "9EQgUW",
+    "candyMachine": "9EQgUWefCB6N7P31waGBuDTHd3MsaVAEpProAb2dKntu",
+    "collection": "CE7rZbgx5FYxBL7bx7uJVnPkuURK46iuD4BrH8hqqHUe"
+  },
+  "items": {
+    "0": {
+      "link": "https://arweave.net/vMotNJB33xtAvxQzkgbnq-bnnwRqw1QichduT6MyzjQ",
+      "imageLink": "https://arweave.net/RULPKsz03Psry0r6FnjjmCRGElD30j1epmrhaolc-_o?ext=png",
+      "name": "Houston Rockets",
+      "onChain": true,
+      "verifyRun": false
+    },
+    "1": {
+      "link": "https://arweave.net/i8LFcJ8SHZ-PyBa0wIrqIu6gpwvT8yHp1JxBiAw7Z0Y",
+      "imageLink": "https://arweave.net/W6jYCsG2RcD9QXNdhw3thGDpUM9JDkoWyeRZM67jhfs?ext=png",
+      "name": "Kobe & Gianna 2",
+      "onChain": true,
+      "verifyRun": false
+    },
+    "2": {
+      "link": "https://arweave.net/-3C2IyCTsNRhlxOlLEcK1Bcz7OEz7cWiTAsImd6MNdk",
+      "imageLink": "https://arweave.net/Pi5cprMzgDHfmvmv4kaU4g8QHCAZPzWCAFeEC3vFu54?ext=png",
+      "name": "Michael Jordan DUNK 2",
+      "onChain": true,
+      "verifyRun": false
+    }
+  },
+  "env": "devnet",
+  "cacheName": "some_example"
+}

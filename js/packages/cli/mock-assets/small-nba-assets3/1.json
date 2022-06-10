@@ -1,9 +1,9 @@
 {
-    "name": "Michael Jordan DUNK 2",
-    "symbol": "NBA_T2",
-    "description": "Collection of 3 NBA Shots on the blockchain. This is the number 3/3.",
+    "name": "Kobe & Gianna 2",
+    "symbol": "NBA_T1",
+    "description": "Collection of 2 NBA Shots on the blockchain. This is the number 2/3.",
     "seller_fee_basis_points": 500,
-    "image": "2.png",
+    "image": "1.png",
     "attributes": [
         {"trait_type": "Layer-1", "value": "0"},
         {"trait_type": "Layer-2", "value": "0"}, 
@@ -12,8 +12,8 @@
     ],
     
     "properties": {
-        "creators": [{"address": "J8MBLPKwHKuSscF1x2UmzQyU6c7RFKGnXzEyzkwHPoLu", "share": 100}],
-        "files": [{"uri": "2.png", "type": "image/png"}]
+        "creators": [{"address": "48QBe44NE3TCeedYox48cE2a3KjWxDBJxGBTBG6wav33", "share": 100}],
+        "files": [{"uri": "1.png", "type": "image/png"}]
     },
     "collection": {"name": "numbers", "family": "numbers"}
 }

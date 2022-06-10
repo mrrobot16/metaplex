@@ -1,8 +1,8 @@
 {
-    "name": "Michael Jordan DUNK 2",
-    "symbol": "NBA_T2",
+    "name": "Milwakee",
+    "symbol": "MIL_KEE",
     "description": "Collection of 3 NBA Shots on the blockchain. This is the number 3/3.",
-    "seller_fee_basis_points": 500,
+    "seller_fee_basis_points": 789,
     "image": "2.png",
     "attributes": [
         {"trait_type": "Layer-1", "value": "0"},
@@ -12,7 +12,7 @@
     ],
     
     "properties": {
-        "creators": [{"address": "J8MBLPKwHKuSscF1x2UmzQyU6c7RFKGnXzEyzkwHPoLu", "share": 100}],
+        "creators": [{"address": "2ryyaM3r2bWRnCkgoUmrdKkA3mefoksGhWsGBBbKSbmF", "share": 100}],
         "files": [{"uri": "2.png", "type": "image/png"}]
     },
     "collection": {"name": "numbers", "family": "numbers"}

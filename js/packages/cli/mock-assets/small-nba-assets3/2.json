@@ -12,7 +12,7 @@
     ],
     
     "properties": {
-        "creators": [{"address": "J8MBLPKwHKuSscF1x2UmzQyU6c7RFKGnXzEyzkwHPoLu", "share": 100}],
+        "creators": [{"address": "48QBe44NE3TCeedYox48cE2a3KjWxDBJxGBTBG6wav33", "share": 100}],
         "files": [{"uri": "2.png", "type": "image/png"}]
     },
     "collection": {"name": "numbers", "family": "numbers"}
