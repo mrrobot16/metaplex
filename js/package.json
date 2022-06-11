@@ -38,11 +38,6 @@
     "@solana/web3.js": "^1.33.0",
     "redstone-node": "0.4.21"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "prettier": {
     "arrowParens": "avoid",
     "semi": true,

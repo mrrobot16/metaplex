@@ -7,7 +7,7 @@ dist/
 lib/
 deploy/
 venv/
-js/packages/cli/assets/
+
 docs/lockup-ui/
 .DS_Store
 *~
@@ -32,7 +32,7 @@ hfuzz_target
 hfuzz_workspace
 **/*.so
 **/.DS_Store
-.cache
+
 js/packages/web/.env
 js/packages/candy-machine-ui/.env
 traits
