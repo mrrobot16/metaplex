@@ -1,0 +1,19 @@
+{
+    "name": "Houston Rockets",
+    "symbol": "HOS_ROC",
+    "description": "Collection of 3 NBA Shots on the blockchain. This is the number 1/3.",
+    "seller_fee_basis_points": 123,
+    "image": "0.png",
+    "attributes": [
+        {"trait_type": "Layer-1", "value": "0"},
+        {"trait_type": "Layer-2", "value": "0"}, 
+        {"trait_type": "Layer-3", "value": "0"},
+        {"trait_type": "Layer-4", "value": "1"}
+    ],
+    
+    "properties": {
+        "creators": [{"address": "48QBe44NE3TCeedYox48cE2a3KjWxDBJxGBTBG6wav33", "share": 100}],
+        "files": [{"uri": "0.png", "type": "image/png"}]
+    },
+    "collection": {"name": "numbers", "family": "numbers"}
+}

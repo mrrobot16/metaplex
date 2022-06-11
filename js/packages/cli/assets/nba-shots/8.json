@@ -1,0 +1,19 @@
+{
+    "name": "NBA_9",
+    "symbol": "H_R",
+    "description": "Collection of 9 NBA Shots on the blockchain. This is the number 9/13.",
+    "seller_fee_basis_points": 1,
+    "image": "8.png",
+    "attributes": [
+        {"trait_type": "Layer-1", "value": "0"},
+        {"trait_type": "Layer-2", "value": "0"}, 
+        {"trait_type": "Layer-3", "value": "0"},
+        {"trait_type": "Layer-4", "value": "1"}
+    ],
+    
+    "properties": {
+        "creators": [{"address": "EQXKS7Hz62VJN5BvSNxwZ5YeEpgVBtjDCV4tVsjqLWT9", "share": 100}],
+        "files": [{"uri": "8.png", "type": "image/png"}]
+    },
+    "collection": {"name": "NBA_SHOTS", "family": "numbers"}
+}
