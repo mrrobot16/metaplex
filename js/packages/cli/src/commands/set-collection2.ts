@@ -24,12 +24,16 @@ import log from 'loglevel';
 import { Program } from '@project-serum/anchor';
 import { parseCollectionMintPubkey } from '../helpers/various2';
 
+const max = 100000;
+const randomNumberInt = Math.floor(Math.random() * max);
+
 export async function setCollection(
   walletKeyPair: anchor.web3.Keypair,
   anchorProgram: Program,
   candyMachineAddress: PublicKey,
   collectionMint: null | PublicKey,
 ) {
+  const candyMachineURL = `'https://explorer.solana.com/address/${candyMachineAddress.toBase58()}?cluster=devnet'`
   const signers = [walletKeyPair];
   const wallet = new anchor.Wallet(walletKeyPair);
   const instructions = [];
@@ -99,8 +103,8 @@ export async function setCollection(
     );
     const data = new DataV2({
       symbol: candyMachine.data.symbol ?? '',
-      name: 'Collection NFT',
-      uri: '',
+      name: `NBA Shot #${randomNumberInt}`,
+      uri: 'https://arweave.net/zGBtt29fNjGUAqFzcu6Q4AyFOILnXdab7d_pstbrcFA',
       sellerFeeBasisPoints: candyMachine.data.seller_fee_basis_points,
       creators: [
         new Creator({
@@ -174,7 +178,12 @@ export async function setCollection(
     }),
   );
 
+  log.info("CANDY_MACHINE_URL: ", candyMachineURL);
+  log.info("                    ");
+  log.info("                    ");
+  log.info("                    ");
   log.info('Candy machine address: ', candyMachineAddress.toBase58());
+  
   log.info('Collection metadata address: ', metadataPubkey.toBase58());
   log.info('Collection metadata authority: ', wallet.publicKey.toBase58());
   log.info(
