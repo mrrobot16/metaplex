@@ -1,0 +1,32 @@
+{
+  "program": {
+    "uuid": "d7enyV",
+    "candyMachine": "d7enyVUrcyM3E1cyTo7jZKs3c6KajBZos6wf4nMZwvz",
+    "collection": "Fxj8dQxgsMh1p147NRRxAHjZX6tcJdhbNd7M94Tykkgm"
+  },
+  "items": {
+    "0": {
+      "link": "https://arweave.net/hOxYmgvHDYOQDW7105C_1I3fHdAF_qEHXdnC1NDqgJA",
+      "imageLink": "https://arweave.net/q3H1Ga1DFWxsMduwWAfjbVHLadUjIzStx9CxYzPssrE?ext=png",
+      "name": "HoustonRockets8",
+      "onChain": true,
+      "verifyRun": true
+    },
+    "1": {
+      "link": "https://arweave.net/a_ymtVAWSLk2L3BKwekxxcQRRLQolr0zPC5Q3U5CXf8",
+      "imageLink": "https://arweave.net/4HNCSTDnG9GiwLl90aFmoJXgfz8aHpnwtghLSHddG5M?ext=png",
+      "name": "MIA-DET8",
+      "onChain": true,
+      "verifyRun": true
+    },
+    "2": {
+      "link": "https://arweave.net/X2OqoNnkNmPKg3ehWKSEjYre97UvaEJOa4i9qI1XU4c",
+      "imageLink": "https://arweave.net/vqzKoEUmR0QMlAO5QOySl8BDmcCyUKf5pQJl_m_t1F0?ext=png",
+      "name": "Milwakee8",
+      "onChain": true,
+      "verifyRun": true
+    }
+  },
+  "env": "devnet",
+  "cacheName": "some_example8"
+}

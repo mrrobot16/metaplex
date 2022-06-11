@@ -1,0 +1,32 @@
+{
+  "program": {
+    "uuid": "CKBjgA",
+    "candyMachine": "CKBjgAvtsobkhsRh4VZ7K6S7FJkLEAbHtCMGa7gAh9cY",
+    "collection": "FMdR1JpbHb6HFhfuqijLHBKs3V6nzcg13WWYVroF4kiT"
+  },
+  "items": {
+    "0": {
+      "link": "https://arweave.net/4tNksLhQ3DaYeNWscgwsOY-aM_xBsjHaP_uRfJfikJA",
+      "imageLink": "https://arweave.net/lRD6RcVc5k4rf8zhY9fB5aY60zfhkM4YQekihaJNaao?ext=png",
+      "name": "HoustonRockets5",
+      "onChain": true,
+      "verifyRun": true
+    },
+    "1": {
+      "link": "https://arweave.net/2TclUziu9ormoDdEMKwzIblefh4N5cmzvB_88kQ4Q8Y",
+      "imageLink": "https://arweave.net/B1Axnt99Alz2S94LAzFz74ZRuIFvmQsl8fdXwcLgg6A?ext=png",
+      "name": "MIA-DET2",
+      "onChain": true,
+      "verifyRun": true
+    },
+    "2": {
+      "link": "https://arweave.net/VeIuoAnYq-7k4_jU8d_CFRXo9dvxGhrNkppG5tT47TE",
+      "imageLink": "https://arweave.net/DOboYmyEpqLuTYP374wPShav6sjSZlQn7DLJgRGwUcI?ext=png",
+      "name": "Milwakee2222",
+      "onChain": true,
+      "verifyRun": true
+    }
+  },
+  "env": "devnet",
+  "cacheName": "some_example5"
+}

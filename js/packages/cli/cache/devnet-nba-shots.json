@@ -1,0 +1,109 @@
+{
+  "program": {
+    "uuid": "7AVSHh",
+    "candyMachine": "7AVSHhiHUqT7RWz9BQCm37n4b8VHu8E7G62ppTz3Ak7G",
+    "collection": "GMpnGBiMwyhgGuyz2nB8zM8m6trF8dQDxqtbMimpWRHH"
+  },
+  "items": {
+    "0": {
+      "link": "https://arweave.net/6HCdI_lm6QkkIwLIc6XSfbj6T3GuxkRUbW-oMF8pztM",
+      "imageLink": "https://arweave.net/Dxj8Aze1LFFfCfFOd2z9qEBYAR3jNe_gNGdHe6Maark?ext=png",
+      "name": "NBA_1",
+      "onChain": true,
+      "verifyRun": false
+    },
+    "1": {
+      "link": "https://arweave.net/uJsU8LuTSnfcI9vKnXWR2MQ8LQ5i_2qz-g9Ka3FBiws",
+      "imageLink": "https://arweave.net/6UZ3UJA7hMY4lxmsBY5jy3WUXv1EZZWFduKQnTjPwB4?ext=png",
+      "name": "NBA_2",
+      "onChain": true,
+      "verifyRun": false
+    },
+    "2": {
+      "link": "https://arweave.net/ElD36x8iwj5_eHtpwFzoHgyG23n71u6AChmKADuwKNA",
+      "imageLink": "https://arweave.net/2ovDUMUTUeVd5oqK5VD2uQ2Ws7QXxd75OsIiBHwQuJ8?ext=png",
+      "name": "NBA_3",
+      "onChain": true,
+      "verifyRun": false
+    },
+    "3": {
+      "link": "https://arweave.net/JMZ4Ovq7VOqfUSxEMRDhdteAqSP9hnMUpLsSqmnUXs8",
+      "imageLink": "https://arweave.net/lweV6G07ZxhdmvbUASkrOn6awoh6xzNO0HUUHHDjJsA?ext=png",
+      "name": "NBA_4",
+      "onChain": true,
+      "verifyRun": false
+    },
+    "4": {
+      "link": "https://arweave.net/siAhnlmqwWG2K5uUUh0SZxjz-fWFJlks6axzppMlrRs",
+      "imageLink": "https://arweave.net/S3_AfZCdnsKmknF3CnTv7Tavd0cC3RUlh25-u2XMEEI?ext=png",
+      "name": "NBA_5",
+      "onChain": true,
+      "verifyRun": false
+    },
+    "5": {
+      "link": "https://arweave.net/xS_ykjZFKRu8ak_mZKlO7RREtLIJmlw8dkYjSK1r1Sg",
+      "imageLink": "https://arweave.net/3b3vbrHGmZgFAvoDLiuKa7jWnWlpTdq-7dmqLBkNfNo?ext=png",
+      "name": "NBA_6",
+      "onChain": true,
+      "verifyRun": false
+    },
+    "6": {
+      "link": "https://arweave.net/CuV0efKqEjopUTVDpjfA6DXDIPREO35lCP4up39DhVw",
+      "imageLink": "https://arweave.net/UErpmeQbN_ycXFyY8Js4QeUHZqyYCGncGpq3Xy2HqWk?ext=png",
+      "name": "NBA_7",
+      "onChain": true,
+      "verifyRun": false
+    },
+    "7": {
+      "link": "https://arweave.net/Gq9THisSqbMMUr94D1dMlPfVp4Qtg2qhpsLlp5nuWu8",
+      "imageLink": "https://arweave.net/bW0srw7yxKFwZKg3LdVuStghAEVDlFMJZalWHLTq4TY?ext=png",
+      "name": "NBA_8",
+      "onChain": true,
+      "verifyRun": false
+    },
+    "8": {
+      "link": "https://arweave.net/TD07vYeuWF4BCuXFLjtI5M1FRRJiyxVVjZ-F9d8O4bQ",
+      "imageLink": "https://arweave.net/1hWWap9byRwzSaSp6uwhpt5p2iD7Bbi_yCeV8W1pcrk?ext=png",
+      "name": "NBA_9",
+      "onChain": true,
+      "verifyRun": false
+    },
+    "9": {
+      "link": "https://arweave.net/VUTDq2uUv1d6BPvWqI5Eg6t8C7_E_W6tvSgLxm-Wbgo",
+      "imageLink": "https://arweave.net/D1cpXTdhScf1yolF3qkWXCdVxjkxXiYqCFjgFDybrms?ext=png",
+      "name": "NBA_10",
+      "onChain": true,
+      "verifyRun": false
+    },
+    "10": {
+      "link": "https://arweave.net/TWjOZu5tMu01ElyoYUkbBoioxluSegNFEKk-BV1xDo0",
+      "imageLink": "https://arweave.net/j6myYpd92qj5YtHte3D697NVYHnXXtBsyx03BHEhsTo?ext=png",
+      "name": "NBA_11",
+      "onChain": true,
+      "verifyRun": false
+    },
+    "11": {
+      "link": "https://arweave.net/tFJ22hTYEFPwkeApTbLjMC3griPwfR03Y-phgI2Gxy8",
+      "imageLink": "https://arweave.net/tbxsA1ef1m18Y1ocVCtOMvyqW1blOdcveGVaZUjw9Jo?ext=png",
+      "name": "NBA_12",
+      "onChain": true,
+      "verifyRun": false
+    },
+    "12": {
+      "link": "https://arweave.net/IREuSCDhvBrE7n1-eveoOSIJORUQDEKUTBW2wLxyT_o",
+      "imageLink": "https://arweave.net/aZisfz6Yxi3MI6QLituZi8f7EvsL3w-yKRyXDegB3D0?ext=png",
+      "name": "MJ DUNK",
+      "onChain": true,
+      "verifyRun": false
+    },
+    "13": {
+      "link": "https://arweave.net/GE04jf6gwZ9xwUZTRdkJqf95AgGQn9v15NPh4athEGU",
+      "imageLink": "https://arweave.net/HO3DXMU-Y20dgC2rEGyY-nYT8eyvjyNzMHBRYy9QKB0?ext=png",
+      "name": "Kobe & Gianna Bryant",
+      "onChain": true,
+      "verifyRun": false
+    }
+  },
+  "env": "devnet",
+  "cacheName": "nba-shots"
+}
