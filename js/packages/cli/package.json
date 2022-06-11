@@ -10,7 +10,12 @@
     "format:check": "prettier --loglevel warn --check \"**/*.{ts,js,json,yaml}\"",
     "lint": "eslint \"src/**/*.ts\" --fix",
     "lint:check": "eslint \"src/**/*.ts\"",
-    "test": "jest"
+    "test": "jest",
+    "verify_assets": "ts-node src/candy-machine-v2-cli.ts verify_assets",
+    "upload": "ts-node src/candy-machine-v2.1-upload-cli.ts upload",
+    "set-collection": "ts-node src/candy-machine-v2-upload-cli.ts set_collection",
+    "mint_one": "ts-node src/candy-machine-v2.1-mint-cli.ts mint_one_token",
+    "mint_multiple_tokens": "ts-node src/candy-machine-v2.1-mint-cli.ts mint_multiple_tokens"
   },
   "pkg": {
     "scripts": "./build/**/*.{js|json}"
