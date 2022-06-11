@@ -30,6 +30,7 @@ import { web3 } from '@project-serum/anchor';
 import log from 'loglevel';
 import { AccountLayout, u64 } from '@solana/spl-token';
 import { getCluster } from './various';
+import { bs58 } from '@project-serum/anchor/dist/cjs/utils/bytes';
 export type AccountAndPubkey = {
   pubkey: string;
   account: AccountInfo<Buffer>;
@@ -124,10 +125,6 @@ export const createCandyMachineV2 = async function (
 ) {
   const candyAccount = Keypair.generate();
   candyData.uuid = uuidFromConfigPubkey(candyAccount.publicKey);
-
-  if (!candyData.symbol) {
-    throw new Error(`Invalid config, there must be a symbol.`);
-  }
 
   if (!candyData.creators || candyData.creators.length === 0) {
     throw new Error(`Invalid config, there must be at least one creator.`);
@@ -522,9 +519,14 @@ export function loadWalletKey(keypair): Keypair {
   if (!keypair || keypair == '') {
     throw new Error('Keypair is required!');
   }
-  const loaded = Keypair.fromSecretKey(
-    new Uint8Array(JSON.parse(fs.readFileSync(keypair).toString())),
+
+  const decodedKey = new Uint8Array(
+    keypair.endsWith('.json') && !Array.isArray(keypair)
+      ? JSON.parse(fs.readFileSync(keypair).toString())
+      : bs58.decode(keypair),
   );
+
+  const loaded = Keypair.fromSecretKey(decodedKey);
   log.info(`wallet public key: ${loaded.publicKey}`);
   return loaded;
 }

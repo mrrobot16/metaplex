@@ -14,6 +14,7 @@ import {
 import { PublicKey, LAMPORTS_PER_SOL } from '@solana/web3.js';
 import {
   CACHE_PATH,
+  CLUSTERS,
   CONFIG_LINE_SIZE_V2,
   EXTENSION_JSON,
   CANDY_MACHINE_PROGRAM_V2_ID,
@@ -47,6 +48,7 @@ import { removeCollection } from './commands/remove-collection';
 import { setCollection } from './commands/set-collection';
 import { withdrawBundlr } from './helpers/upload/arweave-bundle';
 import { CollectionData } from './types';
+import { bs58 } from '@project-serum/anchor/dist/cjs/utils/bytes';
 
 program.version('0.0.2');
 const supportedImageTypes = {
@@ -129,12 +131,19 @@ programCommand('upload')
       setCollectionMint,
     } = cmd.opts();
 
+    if (!CLUSTERS.some(cluster => cluster.name === env)) {
+      throw new Error(
+        'Your environement flag is invalid\nThe valid values are "mainnet-beta", "testnet" & "devnet"',
+      );
+    }
+
     const walletKeyPair = loadWalletKey(keypair);
     const anchorProgram = await loadCandyProgramV2(walletKeyPair, env, rpcUrl);
 
     const {
       storage,
       nftStorageKey,
+      nftStorageGateway,
       ipfsInfuraProjectId,
       number,
       ipfsInfuraSecret,
@@ -276,6 +285,7 @@ programCommand('upload')
         retainAuthority,
         mutable,
         nftStorageKey,
+        nftStorageGateway,
         ipfsCredentials,
         pinataJwt,
         pinataGateway,
@@ -327,32 +337,30 @@ programCommand('withdraw')
     }
     const walletKeypair = loadWalletKey(keypair);
     const anchorProgram = await loadCandyProgramV2(walletKeypair, env, rpcUrl);
-    const configOrCommitment = {
-      commitment: 'confirmed',
-      filters: [
-        {
-          memcmp: {
-            offset: 8,
-            bytes: walletKeypair.publicKey.toBase58(),
-          },
-        },
-      ],
-    };
-    const machines: AccountAndPubkey[] = await getProgramAccounts(
-      anchorProgram.provider.connection,
-      CANDY_MACHINE_PROGRAM_V2_ID.toBase58(),
-      configOrCommitment,
-    );
-    const currentMachine = machines?.find(machine => {
-      return machine.pubkey === candyMachineId;
-    });
 
-    if (!currentMachine) {
-      log.error(`Candy Machine ${candyMachineId} not found`);
+    const candyMachineAccount =
+      await anchorProgram.provider.connection.getAccountInfo(
+        new PublicKey(candyMachineId),
+        'confirmed',
+      );
+    if (!candyMachineAccount) {
+      log.error(
+        `Candy Machine ${candyMachineId} not found on ${rpcUrl ?? env}`,
+      );
       return;
     }
 
-    const refundAmount = currentMachine.account.lamports / LAMPORTS_PER_SOL;
+    const candyMachine = await anchorProgram.account.candyMachine.fetch(
+      candyMachineId,
+    );
+    if (!candyMachine.authority.equals(walletKeypair.publicKey)) {
+      log.error(`Incorrect wallet for candy machine ${candyMachineId}`);
+      log.error(`Candy machine authority is ${candyMachine.authority}`);
+      log.error(`Keypair "${keypair}" is ${walletKeypair.publicKey}`);
+      return;
+    }
+
+    const refundAmount = candyMachineAccount.lamports / LAMPORTS_PER_SOL;
     const cpf = parseFloat(charityPercent);
     let charityPub;
     log.info(`Amount to be drained from ${candyMachineId}: ${refundAmount}`);
@@ -370,13 +378,13 @@ programCommand('withdraw')
         `WARNING: This command will drain the SOL from Candy Machine ${candyMachineId}. This will break your Candy Machine if its still in use`,
       );
       try {
-        if (currentMachine.account.lamports > 0) {
+        if (candyMachineAccount.lamports > 0) {
           const tx = await withdrawV2(
             anchorProgram,
             walletKeypair,
             env,
             new PublicKey(candyMachineId),
-            currentMachine.account.lamports,
+            candyMachineAccount.lamports,
             charityPub,
             cpf,
           );
@@ -1230,6 +1238,13 @@ function programCommand(
 
   return cmProgram;
 }
+
+programCommand('decode_private_key', { requireWallet: false })
+  .argument('<private key>', 'Base58 encoded private key')
+  .action(async privKey => {
+    const decodedPrivKey = Uint8Array.from(bs58.decode(privKey));
+    console.log(decodedPrivKey);
+  });
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 function setLogLevel(value, prev) {
