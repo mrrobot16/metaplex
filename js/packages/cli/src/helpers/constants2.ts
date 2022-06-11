@@ -32,7 +32,7 @@ export const CONFIG_ARRAY_START_V2 =
   8 + // price
   8 + // items available
   9 + // go live
-  10 + // end settings
+  10 + // end settin gs
   4 +
   MAX_SYMBOL_LENGTH + // u32 len + symbol
   2 + // seller fee basis points
@@ -59,6 +59,20 @@ export const CONFIG_ARRAY_START_V2 =
   1; // gatekeeper
 
 export const CONFIG_LINE_SIZE_V2 = 4 + 32 + 4 + 200;
+
+export const CACHE_PATH = './.cache';
+
+export const EXTENSION_PNG = '.png';
+export const EXTENSION_JPG = '.jpg';
+export const EXTENSION_GIF = '.gif';
+export const EXTENSION_MP4 = '.mp4';
+export const EXTENSION_MOV = '.mov';
+export const EXTENSION_MP3 = '.mp3';
+export const EXTENSION_FLAC = '.flac';
+export const EXTENSION_WAV = '.wav';
+export const EXTENSION_GLB = '.glb';
+export const EXTENSION_HTML = '.html';
+export const EXTENSION_JSON = '.json';
 
 export const DEFAULT_TIMEOUT = 30000;
 
