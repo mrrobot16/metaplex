@@ -27,7 +27,7 @@ import { AssetKey } from '../types';
 import { chunks, sleep } from '../helpers/various';
 import { pinataUpload } from '../helpers/upload/pinata';
 import { setCollection } from './set-collection';
-import { nftStorageUploadGenerator } from '../helpers/upload/nft-storage';
+
 
 export async function uploadV2({
   files,
@@ -261,27 +261,6 @@ export async function uploadV2({
         log.info('Waiting 5 seconds to check Bundlr balance.');
         await sleep(5000);
         await withdrawBundlr(walletKeyPair);
-      }
-    } else if (storage === StorageType.NftStorage) {
-      const generator = nftStorageUploadGenerator({
-        dirname,
-        assets: dedupedAssetKeys,
-        env,
-        walletKeyPair,
-        nftStorageKey,
-        nftStorageGateway,
-        batchSize,
-      });
-      for await (const result of generator) {
-        updateCacheAfterUpload(
-          cacheContent,
-          result.assets.map(a => a.cacheKey),
-          result.assets.map(a => a.metadataJsonLink),
-          result.assets.map(a => a.updatedManifest.name),
-        );
-
-        saveCache(cacheName, env, cacheContent);
-        log.info('Saved bundle upload result to cache.');
       }
     } else {
       const progressBar = new cliProgress.SingleBar(

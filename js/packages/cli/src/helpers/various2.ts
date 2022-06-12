@@ -25,6 +25,7 @@ export async function getCandyMachineV2Config(
   nftStorageKey: string;
   ipfsInfuraProjectId: string;
   number: number;
+  itemsAvailable: number;
   ipfsInfuraSecret: string;
   pinataJwt: string;
   pinataGateway: string;
@@ -203,6 +204,7 @@ export async function getCandyMachineV2Config(
     nftStorageKey,
     ipfsInfuraProjectId,
     number,
+    itemsAvailable: number,
     ipfsInfuraSecret,
     pinataJwt,
     pinataGateway: pinataGateway ? pinataGateway : null,

@@ -47,7 +47,7 @@ export const createCandyMachineV2 = async function (
       isWritable: false,
     });
   }
-  console.log('treasuryWallet', treasuryWallet);
+
   return {
     candyMachine: candyAccount.publicKey,
     uuid: candyData.uuid,
@@ -185,3 +185,24 @@ export async function loadCandyProgramV2(
   log.debug('program id from anchor', program.programId.toBase58());
   return program;
 }
+
+export const getCandyMachineCreator = async (
+  candyMachine: anchor.web3.PublicKey,
+): Promise<[anchor.web3.PublicKey, number]> => {
+  return await anchor.web3.PublicKey.findProgramAddress(
+    [Buffer.from('candy_machine'), candyMachine.toBuffer()],
+    CANDY_MACHINE_PROGRAM_V2_ID,
+  );
+};
+
+export const getTokenWallet = async function (
+  wallet: PublicKey,
+  mint: PublicKey,
+) {
+  return (
+    await PublicKey.findProgramAddress(
+      [wallet.toBuffer(), TOKEN_PROGRAM_ID.toBuffer(), mint.toBuffer()],
+      SPL_ASSOCIATED_TOKEN_ACCOUNT_PROGRAM_ID,
+    )
+  )[0];
+};

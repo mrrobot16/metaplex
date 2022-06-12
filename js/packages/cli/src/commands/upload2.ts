@@ -25,7 +25,7 @@ import { ipfsCreds, ipfsUpload } from '../helpers/upload/ipfs';
 import { StorageType } from '../helpers/storage-type';
 import { AssetKey } from '../types';
 import { chunks, sleep } from '../helpers/various';
-import { nftStorageUpload } from '../helpers/upload/nft-storage';
+
 import { pinataUpload } from '../helpers/upload/pinata';
 import { setCollection } from './set-collection2';
 
@@ -177,7 +177,7 @@ export async function uploadV2({
       cacheContent.program.candyMachine = res.candyMachine.toBase58();
       candyMachine = res.candyMachine;
 
-      if (setCollectionMint) {
+      if (!setCollectionMint) {
         const collection = await setCollection(
           walletKeyPair,
           anchorProgram,
@@ -267,8 +267,7 @@ export async function uploadV2({
         },
         cliProgress.Presets.shades_classic,
       );
-      progressBar.start(dedupedAssetKeys.length, 0);
-
+      // progressBar.start(dedupedAssetKeys.length, 0);
       await PromisePool.withConcurrency(batchSize || 10)
         .for(dedupedAssetKeys)
         .handleError(async (err, asset) => {
@@ -312,16 +311,6 @@ export async function uploadV2({
                   pinataGateway,
                 );
                 break;
-              case StorageType.NftStorage:
-                [link, imageLink, animationLink] = await nftStorageUpload(
-                  image,
-                  animation,
-                  manifestBuffer,
-                  walletKeyPair,
-                  env,
-                  nftStorageKey,
-                );
-                break;
               case StorageType.Ipfs:
                 [link, imageLink, animationLink] = await ipfsUpload(
                   ipfsCredentials,
@@ -363,10 +352,10 @@ export async function uploadV2({
               saveCache(cacheName, env, cacheContent);
             }
           } finally {
-            progressBar.increment();
+            // progressBar.increment();
           }
         });
-      progressBar.stop();
+      // progressBar.stop();
     }
     saveCache(cacheName, env, cacheContent);
   }
@@ -544,15 +533,19 @@ async function writeIndices({
     },
     cliProgress.Presets.shades_classic,
   );
-  progressBar.start(poolArray.length, 0);
+  // progressBar.start(poolArray.length, 0);
 
   const addConfigLines = async ({ index, configLines }) => {
+    const configuredLines = configLines.map((item, index) => {
+      return {
+        uri: `https://moonwalk.mypinata.cloud/ipfs/QmYczfoVgRgyNHEga1258hk6hcRCjrApVTrKEhqtdKgwYx/${item}`,
+        name: cacheContent.items[keys[item]].name
+      }
+    })
+    
     const response = await anchorProgram.rpc.addConfigLines(
       index,
-      configLines.map(i => ({
-        uri: cacheContent.items[keys[i]].link,
-        name: cacheContent.items[keys[i]].name,
-      })),
+      configuredLines,
       {
         accounts: {
           candyMachine,
@@ -570,9 +563,10 @@ async function writeIndices({
       };
     });
     saveCache(cacheName, env, cacheContent);
-    progressBar.increment();
+    // progressBar.increment();
+    console.log(`configuredLines`, configuredLines);
   };
-
+  
   await PromisePool.withConcurrency(rateLimit || 5)
     .for(poolArray)
     .handleError(async (err, { index, configLines }) => {
@@ -587,7 +581,7 @@ async function writeIndices({
     .process(async ({ index, configLines }) => {
       await addConfigLines({ index, configLines });
     });
-  progressBar.stop();
+  // progressBar.stop();
   saveCache(cacheName, env, cacheContent);
   return uploadSuccessful;
 }
@@ -632,184 +626,4 @@ type UploadParams = {
   awsS3Bucket: string;
   arweaveJwk: string;
   batchSize: number;
-};
-export async function upload({
-  files,
-  cacheName,
-  env,
-  keypair,
-  storage,
-  rpcUrl,
-  ipfsCredentials,
-  awsS3Bucket,
-  arweaveJwk,
-  batchSize,
-}: UploadParams): Promise<boolean> {
-  // Read the content of the Cache file into the Cache object, initialize it
-  // otherwise.
-  const cache: Cache | undefined = loadCache(cacheName, env);
-  if (cache === undefined) {
-    log.error(
-      'Existing cache not found. To create a new candy machine, please use candy machine v2.',
-    );
-    throw new Error('Existing cache not found');
-  }
-
-  // Make sure config exists in cache
-  if (!cache.program?.config) {
-    log.error(
-      'existing config account not found in cache. To create a new candy machine, please use candy machine v2.',
-    );
-    throw new Error('config account not found in cache');
-  }
-  const config = new PublicKey(cache.program.config);
-
-  cache.items = cache.items || {};
-
-  // Retrieve the directory path where the assets are located.
-  const dirname = path.dirname(files[0]);
-  // Compile a sorted list of assets which need to be uploaded.
-  const dedupedAssetKeys = getAssetKeysNeedingUpload(cache.items, files);
-
-  // Initialize variables that might be needed for uploded depending on storage
-  // type.
-  // These will be needed anyway either to initialize the
-  // Candy Machine Custom Program configuration, or to write the assets
-  // to the deployed configuration on chain.
-  const walletKeyPair = loadWalletKey(keypair);
-  const anchorProgram = await loadCandyProgram(walletKeyPair, env, rpcUrl);
-  // Some assets need to be uploaded.
-  if (dedupedAssetKeys.length) {
-    // Arweave Native storage leverages Arweave Bundles.
-    // It allows to ncapsulate multiple independent data transactions
-    // into a single top level transaction,
-    // which pays the reward for all bundled data.
-    // https://github.com/Bundlr-Network/arbundles
-    // Each bundle consists of one or multiple asset filepair (PNG + JSON).
-    if (
-      storage === StorageType.ArweaveBundle ||
-      storage === StorageType.ArweaveSol
-    ) {
-      // Initialize the Arweave Bundle Upload Generator.
-      // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator
-      const arweaveBundleUploadGenerator = makeArweaveBundleUploadGenerator(
-        storage,
-        dirname,
-        dedupedAssetKeys,
-        env,
-        storage === StorageType.ArweaveBundle
-          ? JSON.parse((await readFile(arweaveJwk)).toString())
-          : undefined,
-        storage === StorageType.ArweaveSol ? walletKeyPair : undefined,
-        batchSize,
-      );
-
-      // Loop over every uploaded bundle of asset filepairs (PNG + JSON)
-      // and save the results to the Cache object, persist it to the Cache file.
-      for await (const value of arweaveBundleUploadGenerator) {
-        const { cacheKeys, arweavePathManifestLinks, updatedManifests } = value;
-
-        updateCacheAfterUpload(
-          cache,
-          cacheKeys,
-          arweavePathManifestLinks,
-          updatedManifests.map(m => m.name),
-        );
-        saveCache(cacheName, env, cache);
-        log.info('Saved bundle upload result to cache.');
-      }
-      log.info('Upload done.');
-    } else {
-      // For other storage methods, we upload the files individually.
-      const SIZE = dedupedAssetKeys.length;
-      const tick = SIZE / 100; // print every one percent
-      let lastPrinted = 0;
-
-      await Promise.all(
-        chunks(Array.from(Array(SIZE).keys()), batchSize || 50).map(
-          async allIndicesInSlice => {
-            for (let i = 0; i < allIndicesInSlice.length; i++) {
-              const assetKey = dedupedAssetKeys[i];
-              const image = path.join(
-                dirname,
-                `${assetKey.index}${assetKey.mediaExt}`,
-              );
-              const manifest = getAssetManifest(dirname, assetKey.index);
-              let animation = undefined;
-              if ('animation_url' in manifest) {
-                animation = path.join(dirname, `${manifest.animation_url}`);
-              }
-              const manifestBuffer = Buffer.from(JSON.stringify(manifest));
-              if (i >= lastPrinted + tick || i === 0) {
-                lastPrinted = i;
-                log.info(`Processing asset: ${assetKey}`);
-              }
-
-              let link, imageLink, animationLink;
-              try {
-                switch (storage) {
-                  case StorageType.Ipfs:
-                    [link, imageLink, animationLink] = await ipfsUpload(
-                      ipfsCredentials,
-                      image,
-                      animation,
-                      manifestBuffer,
-                    );
-                    break;
-                  case StorageType.Aws:
-                    [link, imageLink, animationLink] = await awsUpload(
-                      awsS3Bucket,
-                      image,
-                      animation,
-                      manifestBuffer,
-                    );
-                    break;
-                  case StorageType.Arweave:
-                  default:
-                    [link, imageLink] = await arweaveUpload(
-                      walletKeyPair,
-                      anchorProgram,
-                      env,
-                      image,
-                      manifestBuffer,
-                      manifest,
-                      i,
-                    );
-                }
-                if (
-                  animation
-                    ? link && imageLink && animationLink
-                    : link && imageLink
-                ) {
-                  log.debug('Updating cache for ', assetKey);
-                  cache.items[assetKey.index] = {
-                    link,
-                    imageLink,
-                    name: manifest.name,
-                    onChain: false,
-                  };
-                  saveCache(cacheName, env, cache);
-                }
-              } catch (err) {
-                log.error(`Error uploading file ${assetKey}`, err);
-                throw err;
-              }
-            }
-          },
-        ),
-      );
-    }
-
-    setAuthority(walletKeyPair.publicKey, cache, cacheName, env);
-
-    return writeIndices({
-      anchorProgram,
-      cacheContent: cache,
-      cacheName,
-      env,
-      candyMachine: config,
-      walletKeyPair,
-      rateLimit: 10,
-    });
-  }
 }

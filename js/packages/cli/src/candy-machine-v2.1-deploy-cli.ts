@@ -65,6 +65,7 @@ programCommand('deploy')
 
     const {
       storage,
+      itemsAvailable,
       nftStorageKey,
       ipfsInfuraProjectId,
       ipfsInfuraSecret,
@@ -99,7 +100,7 @@ programCommand('deploy')
     try {
       await createCandyMachine({
         price,
-        totalNFTs: 0,
+        totalNFTs: itemsAvailable,
         gatekeeper,
         storage,
         retainAuthority,

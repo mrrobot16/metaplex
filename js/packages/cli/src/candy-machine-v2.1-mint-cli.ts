@@ -8,7 +8,6 @@ import {
   CACHE_PATH,
 } from './helpers/constants2';
 
-import { verifyTokenMetadata } from './commands/verifyTokenMetadata/verifyTokenMetadata';
 import { loadCache } from './helpers/cache2';
 import { mintV2 } from './commands/mint2';
 

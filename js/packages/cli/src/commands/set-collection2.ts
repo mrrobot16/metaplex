@@ -103,7 +103,7 @@ export async function setCollection(
     );
     const data = new DataV2({
       symbol: candyMachine.data.symbol ?? '',
-      name: `NBA Shot #${randomNumberInt}`,
+      name: `Basic NBA Shot #${randomNumberInt}`,
       uri: 'https://arweave.net/zGBtt29fNjGUAqFzcu6Q4AyFOILnXdab7d_pstbrcFA',
       sellerFeeBasisPoints: candyMachine.data.seller_fee_basis_points,
       creators: [

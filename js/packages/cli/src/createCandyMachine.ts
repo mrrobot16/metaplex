@@ -90,17 +90,6 @@ export async function createCandyMachine({
 
     // initialize candy
     log.info(`initializing candy machine`);
-    // console.log(
-    // 'anchorProgram.idl',
-    // anchorProgram.idl,
-    // 'walletKeyPair',
-    // walletKeyPair,
-    // 'treasuryWallet',
-    // treasuryWallet,
-    // 'splToken',
-    // splToken
-    // )
-    console.log('treasuryWallet!!!!!!!', treasuryWallet);
     const res = await createCandyMachineV2(
       anchorProgram,
       walletKeyPair,
@@ -109,8 +98,8 @@ export async function createCandyMachine({
       {
         itemsAvailable: new BN(totalNFTs),
         uuid,
-        symbol: 'MCM',
-        sellerFeeBasisPoints: 500,
+        symbol: 'EMJ',
+        sellerFeeBasisPoints: 123,
         isMutable: mutable,
         maxSupply: new BN(0),
         retainAuthority: retainAuthority,
@@ -130,9 +119,7 @@ export async function createCandyMachine({
       },
     );
 
-    // let candyMachine = res.candyMachine;
-
-    if (setCollectionMint) {
+    if (!setCollectionMint) {
       const collection = await setCollection(
         walletKeyPair,
         anchorProgram,
