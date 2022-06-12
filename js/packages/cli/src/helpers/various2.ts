@@ -164,8 +164,6 @@ export async function getCandyMachineV2Config(
     wallet = solTreasuryAccount
       ? new web3.PublicKey(solTreasuryAccount)
       : walletKeyPair.publicKey;
-    console.log('walllet', wallet);
-    console.log('solTreasuryAccount', solTreasuryAccount);
   }
 
   if (whitelistMintSettings) {
