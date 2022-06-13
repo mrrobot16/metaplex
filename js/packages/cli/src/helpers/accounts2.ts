@@ -21,7 +21,6 @@ export const createCandyMachineV2 = async function (
 ) {
   const candyAccount = Keypair.generate();
   candyData.uuid = uuidFromConfigPubkey(candyAccount.publicKey);
-  // console.log('candyData', candyData)
   if (!candyData.symbol) {
     throw new Error(`Invalid config, there must be a symbol.`);
   }
@@ -49,8 +48,11 @@ export const createCandyMachineV2 = async function (
   }
 
   return {
+    baseUri: candyData.baseUri,
     candyMachine: candyAccount.publicKey,
     uuid: candyData.uuid,
+    symbol: candyData.symbol,
+    itemsAvailable: candyData.itemsAvailable,
     txId: await anchorProgram.rpc.initializeCandyMachine(candyData, {
       accounts: {
         candyMachine: candyAccount.publicKey,

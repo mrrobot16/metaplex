@@ -1,6 +1,6 @@
 {
     "price": 0.12345678,
-    "number": 4,
+    "number": 10,
     "gatekeeper": null,
     "solTreasuryAccount": "4UTm9QCkMFSGk9f2gg4ns2yuo5pB386xoYFe5R1joxi8",
     "splTokenAccount": null,
@@ -10,5 +10,6 @@
     "whitelistMintSettings": null,
     "hiddenSettings": null,
     "noRetainAuthority": false,
-    "noMutable": false
+    "noMutable": false,
+    "baseUri": "https://moonwalk.mypinata.cloud/ipfs/QmYczfoVgRgyNHEga1258hk6hcRCjrApVTrKEhqtdKgwYx"
 }

@@ -45,6 +45,7 @@ export interface CandyMachineData {
     verified: boolean;
     share: number;
   }[];
+  baseUri?: string;
 }
 
 export interface CandyMachineConfig {
@@ -77,6 +78,7 @@ export interface CandyMachineConfig {
   anchorProgram: Program;
   rateLimit: number;
   rpcUrl: null | string;
+  baseUri?: string;
 }
 
 export interface IPFSCreds {
@@ -99,6 +101,7 @@ export type Manifest = {
       share: number;
     }>;
   };
+  baseUri?: string;
 };
 
 export type WriteIndex = {

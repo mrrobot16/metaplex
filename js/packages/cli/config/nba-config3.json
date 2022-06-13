@@ -14,5 +14,6 @@
     "ipfsInfuraSecret": null,
     "awsS3Bucket": null,
     "noRetainAuthority": false,
-    "noMutable": false
+    "noMutable": false,
+    "baseUri": "https://moonwalk.mypinata.cloud/ipfs/QmYczfoVgRgyNHEga1258hk6hcRCjrApVTrKEhqtdKgwYx"
 }

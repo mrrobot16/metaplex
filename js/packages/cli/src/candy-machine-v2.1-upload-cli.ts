@@ -64,7 +64,7 @@ programCommand('upload')
 
     const walletKeyPair = loadWalletKey(keypair);
     const anchorProgram = await loadCandyProgramV2(walletKeyPair, env, rpcUrl);
-
+    const candyMachineV2Config = await getCandyMachineV2Config(walletKeyPair, anchorProgram, configPath);
     const {
       number,
       retainAuthority,
@@ -77,7 +77,8 @@ programCommand('upload')
       hiddenSettings,
       whitelistMintSettings,
       goLiveDate,
-    } = await getCandyMachineV2Config(walletKeyPair, anchorProgram, configPath);
+      baseUri,
+    } = candyMachineV2Config;
 
     const startMs = Date.now();
     log.info('started at: ' + startMs.toString());
@@ -85,7 +86,7 @@ programCommand('upload')
       await uploadV2({
         cacheName,
         env,
-        totalNFTs: 0,
+        totalNFTs: number,
         gatekeeper,
         retainAuthority,
         mutable,
@@ -100,6 +101,7 @@ programCommand('upload')
         goLiveDate,
         rateLimit,
         rpcUrl,
+        baseUri,
       });
     } catch (err) {
       log.warn('upload was not successful, please re-run.', err);

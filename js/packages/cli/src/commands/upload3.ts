@@ -8,12 +8,12 @@ import { PromisePool } from '@supercharge/promise-pool';
 
 import { saveCache } from '../helpers/cache2';
 import { sleep } from '../helpers/various2';
-import { Manifest, CandyMachineConfig, WriteIndex } from '../types2'; 
+import { firstAssetManifest } from '../helpers/constants2';
+import { CandyMachineConfig, WriteIndex } from '../types2'; 
 
 export async function uploadV2({
   cacheName,
   env,
-  totalNFTs,
   retainAuthority,
   mutable,
   price,
@@ -28,39 +28,18 @@ export async function uploadV2({
   anchorProgram,
   rateLimit,
   rpcUrl,
+  baseUri,
+  totalNFTs,
 }: CandyMachineConfig): Promise<boolean> {
-  let candyMachine;
+  let candyMachine = {
+    address: null,
+    baseUri: null,
+    symbol: null,
+    itemsAvailable: null
+  };
   const cacheContent: any = {
     program: {}
   };  
-
-  const firstAssetManifest: Manifest = {
-      "name": "NEW MOON NBA Shots Collection 3",
-      "symbol": "MOON",
-      "seller_fee_basis_points": 64,
-      "properties": {
-          "creators": [{"address": "EQXKS7Hz62VJN5BvSNxwZ5YeEpgVBtjDCV4tVsjqLWT9", "share": 100}]
-      }
-  }
-  
-  const ipfs = [
-    {
-      uri: 'https://moonwalk.mypinata.cloud/ipfs/QmYczfoVgRgyNHEga1258hk6hcRCjrApVTrKEhqtdKgwYx/1',
-      name: 'NEW MOON NBA Shots Collection 1'
-    },
-    {
-      uri: 'https://moonwalk.mypinata.cloud/ipfs/QmYczfoVgRgyNHEga1258hk6hcRCjrApVTrKEhqtdKgwYx/2',
-      name: 'NBA_2'
-    },
-    {
-      uri: 'https://moonwalk.mypinata.cloud/ipfs/QmYczfoVgRgyNHEga1258hk6hcRCjrApVTrKEhqtdKgwYx/3',
-      name: 'NBA_3'
-    },
-    {
-      uri: 'https://moonwalk.mypinata.cloud/ipfs/QmYczfoVgRgyNHEga1258hk6hcRCjrApVTrKEhqtdKgwYx/4',
-      name: 'NBA_4'
-    }
-  ]
   
   try {
     if (
@@ -79,10 +58,11 @@ export async function uploadV2({
       treasuryWallet,
       splToken,
       {
-        itemsAvailable: new BN(ipfs.length),
+        itemsAvailable: new BN(totalNFTs),
         uuid: undefined,
         symbol: firstAssetManifest.symbol,
         sellerFeeBasisPoints: firstAssetManifest.seller_fee_basis_points,
+        baseUri,
         isMutable: mutable,
         maxSupply: new BN(0),
         retainAuthority,
@@ -103,8 +83,10 @@ export async function uploadV2({
     );
     cacheContent.program.uuid = res.uuid;
     cacheContent.program.candyMachine = res.candyMachine.toBase58();
-    candyMachine = res.candyMachine;
-
+    candyMachine.address = res.candyMachine;
+    candyMachine.baseUri = res.baseUri;
+    candyMachine.symbol = res.symbol;
+    candyMachine.itemsAvailable = res.itemsAvailable.toNumber();
     log.info(
       `initialized config for a candy machine with publickey: ${res.candyMachine.toBase58()}`,
     );
@@ -115,13 +97,25 @@ export async function uploadV2({
     throw error;
   }
 
+  // NOTE This logic is to build dummy Names and URI. 
+  // the collection variable is gonna come from api request
+  let collection = [];
+  for(let id = 0; id < candyMachine.itemsAvailable; id++) {
+    const item = {
+      uri: `${candyMachine.baseUri}/${id+1}`,
+      name: `${candyMachine.symbol} #${id+1}`
+    }
+    collection.push(item);
+  }
+  console.log('collection', collection);
+
   return await writeIndices({
     anchorProgram,
     env,
-    candyMachine,
+    candyMachine: candyMachine.address,
     walletKeyPair,
     rateLimit,
-    collection: ipfs
+    collection,
   });
 }
 
@@ -141,7 +135,7 @@ async function writeIndices({
   collection
 }: WriteIndex) {
   let uploadSuccessful = true;
-
+  
   const poolArray = [{index:'0', configLines: collection}]
   log.info(`Writing all indices in ${poolArray.length} transactions...`);
 
@@ -157,7 +151,6 @@ async function writeIndices({
         signers: [walletKeyPair],
       },
     );
-    console.log(`configLines`, configLines);
   };
 
   await PromisePool.withConcurrency(rateLimit || 5)

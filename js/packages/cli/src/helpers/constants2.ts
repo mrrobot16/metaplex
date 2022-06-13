@@ -1,4 +1,5 @@
 import { PublicKey, clusterApiUrl } from '@solana/web3.js';
+import { Manifest } from '../types2';
 
 export const MAX_NAME_LENGTH = 32;
 export const MAX_URI_LENGTH = 200;
@@ -117,23 +118,13 @@ export const MinimalCandyMachineConfig = {
   noMutable: false,
 };
 
-export const metaplexFormatIpfs = { 
-  "name": "NEW MOON NBA Shots Collection 3", 
-  "symbol": "IPFS", 
-  "description": "Collection of 13 NBA Shots on the blockchain. This is the number 1/13.", 
-  "seller_fee_basis_points": 0, 
-  "image": "https://ipfs.io/ipfs/QmNXQ45RToYnmCyNgvhAgEN42zcNQowN7tmnGZHvgCrELP?ext=png", 
-  "properties": { 
-    "creators": [{ "address": "EQXKS7Hz62VJN5BvSNxwZ5YeEpgVBtjDCV4tVsjqLWT9", "share": 100 }], 
-    "files": [{ "uri": "https://ipfs.io/ipfs/QmNXQ45RToYnmCyNgvhAgEN42zcNQowN7tmnGZHvgCrELP?ext=png", "type": "image/png" }] 
-  }
+export const firstAssetManifest: Manifest = {
+    "name": "NBA Top Shots",
+    "symbol": "NBA",
+    "seller_fee_basis_points": 16,
+    "properties": {
+        "creators": [{"address": "EQXKS7Hz62VJN5BvSNxwZ5YeEpgVBtjDCV4tVsjqLWT9", "share": 100}]
+    },
+    "baseUri": "https://moonwalk.mypinata.cloud/ipfs/QmYczfoVgRgyNHEga1258hk6hcRCjrApVTrKEhqtdKgwYx"
 }
-export const moonwalkFormatIpfs = {
-  "description":"Kevin the Monkey",
-  "image":"https://moonwalk.mypinata.cloud/ipfs/QmWbckQLDLxWs5aWEq4z9skTkUdi2tWrVcxNgKKEqZPUx1",
-  "name":"Kevin the Monkey #6",
-  "properties": { 
-    "creators": [{ "address": "EQXKS7Hz62VJN5BvSNxwZ5YeEpgVBtjDCV4tVsjqLWT9", "share": 100 }], 
-    "files": [{ "uri": "https://ipfs.io/ipfs/QmNXQ45RToYnmCyNgvhAgEN42zcNQowN7tmnGZHvgCrELP?ext=png", "type": "image/png" }] 
-  }
-}
+
